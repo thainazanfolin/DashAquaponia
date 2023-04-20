@@ -9,14 +9,14 @@ Projeto Integrador do 3º semestre da FATEC Araras | 2º objetivo da ODS/ONU: Fo
   <tr>
     <td align="center">
       <a href="https://github.com/thainazanfolin">
-        <img src="https://avatars.githubusercontent.com/u/97535906?v=4" width="100px;" alt="Ester"/>
+        <img src="https://avatars.githubusercontent.com/u/102308025?v=4" width="100px;" alt="Thaina"/>
         <br />
         <sub>
-          <b>Ester Morais</b>
+          <b>Thainá Zanfolin</b>
         </sub>
        </a>
        <br />
-       <a href="https://www.linkedin.com/in/ester-morais-438aa4224/" title="Linkedin">@estermorais</a> 
+       <a href="https://www.linkedin.com/in/thaina-zanfolin" title="Linkedin">@thainazanfolin</a> 
        <br />
     </td> 
     <td align="center">
