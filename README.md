@@ -43,6 +43,42 @@ Projeto Integrador do 3º semestre da FATEC Araras | 2º objetivo da ODS/ONU: Fo
         <a href="https://www.linkedin.com/in/harthur-benetti-290515256/" title="Linkedin">@harthurbenetti</a>                                                           
        <br />                                                                                                                                              
     </td>  
+    <td align="center">
+      <a href="https://github.com/gabriellpedro">
+        <img src="https://avatars.githubusercontent.com/u/102560434?v=4" width="100px;" alt="Gabriel"/>
+        <br />
+        <sub>
+          <b>Gabriel Pedro</b>
+        </sub>
+       </a>
+       <br />
+        <a href="https://www.linkedin.com/in/gabriel-pedro-78a7a71bb/" title="Linkedin">@gabrielpedro</a>                                                           
+       <br />                                                                                                                                              
+    </td>  
+    <td align="center">
+      <a href="https://github.com/BrunoRisso58">
+        <img src="https://avatars.githubusercontent.com/u/81779127?v=4" width="100px;" alt="Bruno"/>
+        <br />
+        <sub>
+          <b>Bruno Risso</b>
+        </sub>
+       </a>
+       <br />
+        <a href="https://www.linkedin.com/in/bruno-risso-923511203/" title="Linkedin">@brunorisso</a>                                                           
+       <br />                                                                                                                                              
+    </td>  
+    <td align="center">
+      <a href="https://github.com/teuzfavetta">
+        <img src="https://avatars.githubusercontent.com/u/84945241?v=4" width="100px;" alt="Mateus"/>
+        <br />
+        <sub>
+          <b>Mateus Favetta </b>
+        </sub>
+       </a>
+       <br />
+        <a href="https://www.linkedin.com/in/mateus-favetta-3a7b00200/" title="Linkedin">@mateusfavetta</a>                                                           
+       <br />                                                                                                                                              
+    </td>  
   </tr>
   </table>
 
