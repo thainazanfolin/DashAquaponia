@@ -3,6 +3,14 @@ Projeto Integrador do 3º semestre da FATEC Araras | 2º objetivo da ODS/ONU: Fo
 
 # Tema: Fome Zero e Agricultura Sustentável
 
+## 🚀 Tecnologias utilizadas
+
+Esse projeto foi desenvolvido com as seguintes tecnologias:
+
+- MongoDB
+- Python
+- Django
+
 # :computer: Autores
 
 <table>
