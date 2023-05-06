@@ -1,7 +1,10 @@
 # DashAquaponia
 Projeto Integrador do 3º semestre da FATEC Araras | 2º objetivo da ODS/ONU: Fome zero e Agricultura Sustentável
 
-# Tema: Fome Zero e Agricultura Sustentável
+Tema: Fome Zero e Agricultura Sustentável
+
+# Objetivos do Projeto: 
+Desenvolver uma plataforma digital de registros e acompanhamento de dados (dashboard) para sistemas de plantação Aquaponia, com informações do crescimento da colheita, animais e faturamento.  
 
 ## 🚀 Tecnologias utilizadas
 
@@ -9,7 +12,8 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - MongoDB
 - Python
-- Django
+- Framework: Django
+- Cronogramas, modelos EAP, custos e planejamento do projeto
 
 # :computer: Autores
 
