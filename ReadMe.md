@@ -49,18 +49,6 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
        <br />
     </td>  
     <td align="center">
-      <a href="https://github.com/HarthurComH">
-        <img src="https://user-images.githubusercontent.com/102560328/200691413-30172efb-0b05-49e7-af87-ac8d9f9473ad.jpg" width="100px;" alt="Harthur"/>
-        <br />
-        <sub>
-          <b>Harthur Benetti</b>
-        </sub>
-       </a>
-       <br />
-        <a href="https://www.linkedin.com/in/harthur-benetti-290515256/" title="Linkedin">@harthurbenetti</a>                                                           
-       <br />                                                                                                                                              
-    </td>  
-    <td align="center">
       <a href="https://github.com/gabriellpedro">
         <img src="https://avatars.githubusercontent.com/u/102560434?v=4" width="100px;" alt="Gabriel"/>
         <br />
