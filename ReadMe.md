@@ -3,7 +3,7 @@ Projeto Integrador do 3º semestre da FATEC Araras | 2º objetivo da ODS/ONU: Fo
 
 Tema: Fome Zero e Agricultura Sustentável
 
-# Objetivos do Projeto: 
+# Objetivos do Projeto 
 Desenvolver uma plataforma digital de registros e acompanhamento de dados (dashboard) para sistemas de plantação Aquaponia, com informações do crescimento da colheita, animais e faturamento.  
 
 ## 🚀 Tecnologias utilizadas
@@ -20,7 +20,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [Estrutura Analítica de Projeto](https://miro.com/app/board/uXjVMJ0BVdU=/?share_link_id=190775230409)
 - [Histórias do usuário](https://docs.google.com/spreadsheets/d/1OED4GCxzIS7YwNn84FnLYzit5MAidYlSuiQpo4npjgU/edit?usp=sharing)
 
-# :computer: Autores
+# :computer: Equipe
 
 <table>
   <tr>
