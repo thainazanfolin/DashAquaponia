@@ -18,7 +18,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 ## 📃 Documentos
 - PMCanvas
 - [Estrutura Analítica de Projeto](https://miro.com/app/board/uXjVMJ0BVdU=/?share_link_id=190775230409)
-- Histórias do usuário
+- [Histórias do usuário](https://docs.google.com/spreadsheets/d/1OED4GCxzIS7YwNn84FnLYzit5MAidYlSuiQpo4npjgU/edit?usp=sharing)
 
 # :computer: Autores
 
