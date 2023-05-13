@@ -1,0 +1,127 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dash Aquaponia</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+</head>
+<body>
+    <header>
+        <nav>
+            <a class="logo" href="/">Dash Aquaponia</a>
+            <div class="mobile-menu">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <ul class="nav-list">
+                <li class="nav-item"><a href="dash">Dashboards</a></li>
+                <li class="nav-item"><a href="contato">Contato</a></li>
+                <li class="nav-item"><a href="">Entrar</a></li>
+            </ul>
+
+            <!-- <div class="btn-expandir">
+                <button>perfil</button>
+            </div> -->
+        </nav>
+    </header>
+
+    <script src="js/mobile_navbar.js"></script>
+
+    
+    <div class="dash">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+      google.charts.load('current', {'packages':['corechart']});
+
+      google.charts.setOnLoadCallback(drawALfaceChart);
+
+      google.charts.setOnLoadCallback(drawPeixeChart);
+
+      google.charts.setOnLoadCallback(drawGastosChart);
+
+      function drawALfaceChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Ano');
+        data.addColumn('number', 'Alface');
+        data.addRows([
+          ['2020', 2000],
+          ['2021', 4500],
+          ['2022', 8000],
+          ['2023', 15500], 
+        ]);
+
+        var options = {title:'Produção anual de alface',
+                       width:500,
+                       height:300};
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('Alface_chart_div'));
+        chart.draw(data, options);
+      }
+
+      function drawPeixeChart() {
+
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Ano');
+        data.addColumn('number', 'Peixe');
+        data.addRows([
+          ['2020', 1500],
+          ['2021', 3000],
+          ['2022', 5200],
+          ['2023', 7500],
+        ]);
+
+        var options = {title:'Produçao anual de peixe',
+                       width:800,
+                       height:300};
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('Peixe_chart_div'));
+        chart.draw(data, options);
+      }
+
+      
+      function drawGastosChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Ano');
+        data.addColumn('number', 'Alface');
+        data.addRows([
+          ['2020', 2000],
+          ['2021', 4500],
+          ['2022', 8000],
+          ['2023', 15500], 
+        ]);
+
+        var options = {title:'Gastos anual',
+                       width:500,
+                       height:300};
+
+        var chart = new google.visualization.PierChart(document.getElementById('Gastos_chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+ 
+    <table class="columns">
+      <tr>
+        <td><div id="Alface_chart_div" style="border: 1px solid #ccc"></div></td>
+        <td><div id="Peixe_chart_div" style="border: 1px solid #ccc"></div></td>
+        <td><div id="Gastos_chart_div" style="border: 1px solid #ccc"></div></td>
+      </tr>
+    </table>
+
+
+
+
+</div>
+
+<script src="{% static 'js/mobile_navbar.js' %}"></script>
+</body>
+</html>
+

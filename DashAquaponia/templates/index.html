@@ -1,0 +1,273 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://kit.fontawesome.com/0edc8eb879.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    
+</head>
+<body>
+    <header>
+        <nav>
+            <a class="logo" href="/">Dash Aquaponia</a>
+            <div class="mobile-menu">
+<!-- span -->   <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <ul class="nav-list">
+                <div class="dropdown">
+                    <button class="dropbtn">Nossas soluções
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="">Monitoramento</a>
+                        <a href="">Monitoramento</a>
+                        <a href="">Monitoramento</a>
+                    </div>
+                </div>
+                <li class="nav-item"><a href="dash">Dashboards</a></li>
+                <li class="nav-item"><a href="contato">Contato</a></li>
+                <li class="nav-item"><a href="">Entrar</a></li>
+            </ul>
+
+            <!-- <div class="btn-expandir">
+                <button>perfil</button>
+            </div> -->
+        </nav>
+    </header>
+    <main>
+        <section class="home-intro" style="background-image: url({% static 'img/aqua3.jpg' %});">
+            <div class="home-text-intro">
+                <h2 class="text-intro-h2">O QUE VOCÊ PROCURA EM UM SISTEMA DE MONITORAMENTO</h2>
+                <h2 class="text-intro-h2">PARA SUA AQUAPONIA VOCÊ ENCONTRA AQUI!</h2>  
+                <p class="text-intro-p">Sistema completo e integrado; Alto padrão em atendimento; Suporte efetivo e humanizado;
+                    Autoatendimento intuitivo e baseado em dados; Resolutividade rápida e eficaz.
+                </p>   
+            </div>
+        </section>
+
+        <section>
+            <h2 class="solucao">Nossas Soluções</h2>
+        </section>
+
+        <main class="secao-card">
+            <section class="card1">
+                {% comment %} <div class="icon">
+                    <img src="{% static 'img/icon.svg' %}" alt="icon-card">
+                </div> {% endcomment %}
+
+                <div class="content">
+                    <h3>Monitoramento</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Voluptate earum consectetur modi, delectus assumenda magnam obcaecati accusantium non sapiente, 
+                        fuga, placeat culpa vel sunt ea dolorem! Blanditiis eveniet repudiandae itaque!
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam suscipit tempore maiores ab molestias 
+                        blanditiis fugit est, ex, sit nisi similique eum voluptate aperiam aut laborum neque cum ipsam accusantium!
+                    </p>
+                </div>
+
+                <button id="botao_ler1">Ler mais</button>
+            </section>
+
+            <section class="card2">
+                {% comment %} <div class="icon">
+                    <img src="{% static 'img/icon.svg' %}" alt="icon-card">
+                </div> {% endcomment %}
+
+                <div class="content">
+                    <h3>Monitoramento</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Voluptate earum consectetur modi, delectus assumenda magnam obcaecati accusantium non sapiente, 
+                        fuga, placeat culpa vel sunt ea dolorem! Blanditiis eveniet repudiandae itaque!
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam suscipit tempore maiores ab molestias 
+                        blanditiis fugit est, ex, sit nisi similique eum voluptate aperiam aut laborum neque cum ipsam accusantium!
+                    </p>
+                </div>
+
+                <button id="botao_ler2">Ler mais</button>
+            </section>
+
+            <section class="card3">
+                {% comment %} <div class="icon">
+                    <img src="{% static 'img/icon.svg' %}" alt="icon-card">
+                </div> {% endcomment %}
+
+                <div class="content">
+                    <h3>Monitoramento</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Voluptate earum consectetur modi, delectus assumenda magnam obcaecati accusantium non sapiente, 
+                        fuga, placeat culpa vel sunt ea dolorem! Blanditiis eveniet repudiandae itaque!
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam suscipit tempore maiores ab molestias 
+                        blanditiis fugit est, ex, sit nisi similique eum voluptate aperiam aut laborum neque cum ipsam accusantium!
+                    </p>
+                </div>
+
+                <button id="botao_ler3">Ler mais</button>
+            </section>
+        
+        </main>
+        
+        <section class="home">
+            <div class="home-text">
+                <h4 class="text-h4">Bem-vindo ao DashAquaponia</h4>
+                <h1 class="text-h1">Diferente dos iguais</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod error veniam in voluptatem magni quisquam</p>
+<!--LINK WHATSAPP!--><a href="" class="home-btn">Experimente</a>
+            </div>
+             <div class="home-img">
+                <img src="{% static 'img/leme.png' %}" alt="aquaponia">
+            </div> 
+        </section>
+
+        <!-- <div class="dash-home">
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            <script type="text/javascript">
+        
+              google.charts.load('current', {'packages':['corechart']});
+        
+              google.charts.setOnLoadCallback(drawALfaceChart);
+        
+              google.charts.setOnLoadCallback(drawPeixeChart);
+        
+              google.charts.setOnLoadCallback(drawGastosChart);
+        
+              function drawALfaceChart() {
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Ano');
+                data.addColumn('number', 'Alface');
+                data.addRows([
+                  ['2020', 2000],
+                  ['2021', 4500],
+                  ['2022', 8000],
+                  ['2023', 15500], 
+                ]);
+        
+                var options = {title:'Produção anual de alface'};
+        
+                var chart = new google.visualization.ColumnChart(document.getElementById('Alface_chart_div'));
+                chart.draw(data, options);
+              }
+         
+              function drawPeixeChart() {
+        
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Ano');
+                data.addColumn('number', 'Peixe');
+                data.addRows([
+                  ['2020', 1500],
+                  ['2021', 3000],
+                  ['2022', 5200],
+                  ['2023', 7500],
+                ]);
+        
+                var options = {title:'Produçao anual de peixe'};
+        
+                var chart = new google.visualization.ColumnChart(document.getElementById('Peixe_chart_div'));
+                chart.draw(data, options);
+              }
+        
+              
+              function drawGastosChart() {
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Ano');
+                data.addColumn('number', 'Alface');
+                data.addRows([
+                  ['2020', 2000],
+                  ['2021', 4500],
+                  ['2022', 8000],
+                  ['2023', 15500], 
+                ]);
+        
+                var options = {title:'Gastos anual',
+                               width:500,
+                               height:300};
+        
+                var chart = new google.visualization.PierChart(document.getElementById('Gastos_chart_div'));
+                chart.draw(data, options);
+              }
+            </script>
+         
+            <table class="columns-dash-home">
+              <tr>
+                <td><div id="Alface_chart_div" style="border: 1px solid #ccc"></div></td>
+                <td><div id="Peixe_chart_div" style="border: 1px solid #ccc"></div></td>
+                <td><div id="Gastos_chart_div" style="border: 1px solid #ccc"></div></td>
+              </tr>
+            </table>
+        </div> -->
+
+            <div class="grafico1-div" style="margin: 0% 25%; width: 50%; heigth: 50vh; display: flex; align-items: center;">
+                <canvas id="grafico1"></canvas>
+
+                <script>
+                    const ctx = document.getElementById('grafico1');
+            
+                    new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Janeiro', 'Feveriro', 'Março', 'Abril', 'Maio', 'Junho'],
+                        datasets: [{
+                        label: 'Produção anual de Alface',
+                        data: [0, 50, 200, 150, 100, 250, 300],
+                        borderColor:'#238C51',
+                        tension: 0.2,
+                        
+                        }]
+                    },
+                    });
+                    
+                </script>
+            </div>
+            <div>
+                <h1 class="grafico1-h2" style="text-align: center; margin: 4% 0%">
+                    Obtenha informações da sua produção, com nossa ajuda! 
+                </h1>
+            </div>
+            
+   
+        
+    </main>
+   
+
+
+    <footer>
+        <div class="redes-socias">
+            <h2 class="h2-redes">Redes sociais</h2>
+
+            <ul class="footer-list">
+                <li class="footer-item"><a href="">Instagram </a>
+                <li class="footer-item"><a href="">Facebook</a></li>
+                <li class="footer-item"><a href="">Linkedin</a></li>
+            </ul>
+        </div>
+
+        <div class="telefone-email">
+            <h2 class="h2-contatos">Contatos</h2>
+            
+            
+
+            <ul class="footer-list">
+                <li class="footer-item">Telefone:<a href="">(19) 9929-9999</a>
+                <li class="footer-item">Email:<a href="">aquaponia@dash.com</a></li>
+            </ul>
+        </div>
+    </footer>
+
+
+
+    <script src="{% static 'js/card.js' %}"></script>
+    <script src="{% static 'js/mobile_navbar.js' %}"></script>
+</body>
+</html>
