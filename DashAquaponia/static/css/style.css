@@ -456,7 +456,7 @@ footer {
 }
 
 .footer-item {
-    margin: 2%;
+    margin: 1%;
 }
 
 .footer-list {
@@ -499,7 +499,7 @@ footer {
 }
 
 .columns {
-    margin: auto;
+    margin: 0px;
 }
 
 /* .dash-home {

@@ -6,13 +6,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Dash Aquaponia</title>
 
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="https://kit.fontawesome.com/0edc8eb879.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon-16x16.png' %}">
 </head>
 <body>
     <header>
@@ -30,8 +32,8 @@
                     </button>
                     <div class="dropdown-content">
                         <a href="">Monitoramento</a>
-                        <a href="">Monitoramento</a>
-                        <a href="">Monitoramento</a>
+                        {% comment %} <a href="">Monitoramento</a>
+                        <a href="">Monitoramento</a> {% endcomment %}
                     </div>
                 </div>
                 <li class="nav-item"><a href="dash">Dashboards</a></li>
@@ -61,9 +63,9 @@
 
         <main class="secao-card">
             <section class="card1">
-                {% comment %} <div class="icon">
+                <div class="icon">
                     <img src="{% static 'img/icon.svg' %}" alt="icon-card">
-                </div> {% endcomment %}
+                </div>
 
                 <div class="content">
                     <h3>Monitoramento</h3>
@@ -79,7 +81,7 @@
                 <button id="botao_ler1">Ler mais</button>
             </section>
 
-            <section class="card2">
+            <!-- <section class="card2">
                 {% comment %} <div class="icon">
                     <img src="{% static 'img/icon.svg' %}" alt="icon-card">
                 </div> {% endcomment %}
@@ -116,8 +118,9 @@
 
                 <button id="botao_ler3">Ler mais</button>
             </section>
-        
-        </main>
+     -->   
+        </main> 
+    
         
         <section class="home">
             <div class="home-text">
@@ -235,19 +238,14 @@
                     Obtenha informações da sua produção, com nossa ajuda! 
                 </h1>
             </div>
-            
+  
    
-        
-    </main>
-   
-
-
     <footer>
         <div class="redes-socias">
             <h2 class="h2-redes">Redes sociais</h2>
 
             <ul class="footer-list">
-                <li class="footer-item"><a href="">Instagram </a>
+                <li class="footer-item"><a href="">Instagram </a></li>
                 <li class="footer-item"><a href="">Facebook</a></li>
                 <li class="footer-item"><a href="">Linkedin</a></li>
             </ul>
@@ -255,11 +253,9 @@
 
         <div class="telefone-email">
             <h2 class="h2-contatos">Contatos</h2>
-            
-            
-
+     
             <ul class="footer-list">
-                <li class="footer-item">Telefone:<a href="">(19) 9929-9999</a>
+                <li class="footer-item">Telefone:<a href="">(19) 9929-9999</a></li>
                 <li class="footer-item">Email:<a href="">aquaponia@dash.com</a></li>
             </ul>
         </div>
