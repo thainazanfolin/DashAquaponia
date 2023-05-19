@@ -13,9 +13,11 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+AUTH_USER_MODEL = 'DashAquaponia.UserModel'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -39,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'DashAquaponia.apps.DashaquaponiaConfig',
-
 ]
 
 MIDDLEWARE = [
@@ -76,14 +77,17 @@ WSGI_APPLICATION = 'PI.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'djongo',
-#         'NAME': 'DashPI',
-#         'HOST': 'localhost',
-#         'PORT': '27017'
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'djongo',
+        'NAME': 'DashPI',
+        'ENFORCE_SCHEMA': False,
+        'HOST': 'localhost',
+        'PORT': '27017'
+    }
+}
+
+LOGIN_URL = 'login/'
 
 # DATABASES = {
 #     'default': {
@@ -92,16 +96,16 @@ WSGI_APPLICATION = 'PI.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-        'default': {
-            'ENGINE': 'djongo',
-            'NAME': 'AquaDash',
-            'ENFORCE_SCHEMA': False,
-            'CLIENT': {
-                'host': 'mongodb+srv://DashPI:12345@cluster0.akfplfl.mongodb.net/?retryWrites=true&w=majority'
-            }  
-        }
-}
+# DATABASES = {
+#         'default': {
+#             'ENGINE': 'djongo',
+#             'NAME': 'AquaDash',
+#             'ENFORCE_SCHEMA': False,
+#             'CLIENT': {
+#                 'host': 'mongodb+srv://DashPI:12345@cluster0.akfplfl.mongodb.net/?retryWrites=true&w=majority'
+#             }  
+#         }
+# }
 
 
 # Password validation

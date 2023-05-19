@@ -5,4 +5,5 @@ app_name = 'DashAquaponia'
 
 urlpatterns = [
     path('', views.IndexView.as_view(), name="index"),
+    path('login/', views.loginFormView, name="registerForm")
 ]
