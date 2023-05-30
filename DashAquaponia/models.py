@@ -1,5 +1,5 @@
 from django.db import models as django_models, models
-from django.contrib.auth.hashers import make_password
+# from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 
 class DashModel(django_models.Model):
@@ -40,7 +40,7 @@ class CustomUserManager(BaseUserManager):
 
 class UserModel(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
-    password = models.CharField(unique=True, max_length=10000)
+    password = models.CharField(max_length=10000)
 
     objects = CustomUserManager()
 
@@ -48,7 +48,6 @@ class UserModel(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = ['password']
 
     def save(self, *args, **kwargs):
-        self.password = make_password(self.password)
         super().save(*args, **kwargs)
 
     def __str__(self):
