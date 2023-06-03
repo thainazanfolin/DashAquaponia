@@ -34,7 +34,6 @@ body {
     overflow-x: hidden;
 }
 
-
 .home {
     width: 100%;
     height: 100vh;
@@ -518,4 +517,177 @@ footer {
 .grafico1-div{
     width: 50%; 
     display: flex;
+}
+
+
+/* LOGIN */
+
+.loginbody, .registrobody {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--cinza);
+  }
+
+.logincontainer {
+
+    padding: 6px;
+    width: 350px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 0 20px 0 var(--dark);
+}
+
+form {
+    position: absolute;
+    margin-top: 80px;
+    transition: .5s;
+    width: 300px;
+    height: 400px;
+}
+
+.buttonsForm {
+    margin-top: 40px;
+    position: relative;
+    border-radius: 30px;
+    box-shadow: 0 0 7px 0 var(--verdeesc);
+}
+
+.buttonsForm button {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    position: relative;
+    padding: 10px 29px;
+}
+
+.btnColor {
+    position: absolute;
+    width: 108px;
+    height: 100%;
+    background: linear-gradient(to right, var(--verdeesc), #93d6b0);
+    border-radius: 30px;
+    transition: .3s;
+}
+
+input[type="text"], input[type="password"] {
+    border: none;
+    margin-top: 40px;
+    border-radius: 60px;
+    padding: 8px 0 8px 35px;
+    outline: none;
+    width: 100%;
+}
+
+button[type="submit"] {
+    background: var(--verdeesc);
+    color: white;
+    border-radius: 30px;
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 8px 0 8px 15px;
+    font-size: 15px;
+    margin-top: 40px;
+    cursor: pointer;
+}
+
+.divCheck, .termos, .esqueceu_senha {
+    color: black;
+    margin: 10px 0 0 5px;
+    width: 80%;
+    font-size: 13px;
+
+}
+
+#termos {
+    color: var(--verdeesc);
+}
+
+#esqueceusenha {
+    color: var(--verdeesc);
+}
+
+#entrar {
+    left: 25px;
+}
+
+#cadastrar {
+    left: 450px;
+}
+
+i {
+    position: absolute;
+    left: 0;
+    padding: 10px 10px;
+}
+
+.iEmail {
+    top: 40px;
+}
+
+.iSenha {
+    top: 114px; 
+}
+
+.iSenha2 {
+    top: 190px;
+}
+  
+
+/* REGISTRO */
+.registroh1 {
+    text-align: center;
+
+}
+
+.registrocontainer {
+    padding: 5px;
+    width: 500px;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 0 20px 0 var(--dark);
+}
+
+.registrolabel {
+    border: none;
+    margin-top: 10px;
+    border-radius: 60px;
+    padding: 8px 0 8px 35px;
+    outline: none;
+    width: 100%;
+  }
+  
+.registrobtn{
+    background: var(--verdeesc);
+    color: white;
+    border-radius: 30px;
+    width: 50%;
+    border: none;
+    outline: none;
+    padding: 8px 0px;
+    font-size: 15px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+
+.registrolabeldescricao {
+    border: none;
+    margin-top: 0px;
+    border-radius: 60px;
+    padding: 8px 0 8px 35px;
+    outline: none;
+    width: 100%;
 }
