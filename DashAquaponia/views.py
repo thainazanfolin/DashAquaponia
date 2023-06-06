@@ -52,7 +52,7 @@ def DashAlface(request):
             'dash_line' : chart_line,
             'dash_bar' : chart_bar
         }
-        return render(request, 'dash_teste.html', contexto)
+        return render(request, 'dash.html', contexto)
     else:
         sem_info = "Sem informações no banco para este usuário"
         contexto = {
@@ -60,7 +60,7 @@ def DashAlface(request):
             'dash_line' : sem_info,
             'dash_bar' : sem_info
         }
-        return render(request, 'dash_teste.html', contexto)
+        return render(request, 'dash.html', contexto)
     
 
 def CadastroDash(request):
