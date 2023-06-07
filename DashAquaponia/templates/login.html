@@ -44,12 +44,16 @@
 
     <form method="post" id="cadastrar"> 
         {% csrf_token %}
+
+      <input type="text" placeholder="Primeiro nome" required />
+      <input type="text" placeholder="Segundo nome" required />
       <input type="text" placeholder="Email" id="CadastroEmail" name="CadastroEmail" required />
-      <i class="fas fa-envelope iEmail"></i>
+      <i class="fas fa-envelope iEmailCadastrar"></i>
       <input type="password" placeholder="Senha" id="CadastroPassword" name="CadastroPassword" required />
-      <i class="fas fa-lock iSenha"></i>
+      <i class="fas fa-lock iSenhaCadastrar"></i>
       <input type="password" placeholder="Confirmar senha" id="ConfirmCadastroPassword" name="ConfirmCadastroPassword" required />
-      <i class="fas fa-lock iSenha2"></i>
+      <i class="fas fa-lock iSenha2Cadastrar"></i>
+      
       <div class="termos">
         <a href="" id="termos">Termos</a>
       </div>

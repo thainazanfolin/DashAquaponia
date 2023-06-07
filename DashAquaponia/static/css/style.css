@@ -535,7 +535,7 @@ footer {
 
     padding: 6px;
     width: 350px;
-    height: 450px;
+    height: 90vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -640,7 +640,19 @@ i {
 .iSenha2 {
     top: 190px;
 }
+/* CADASTRAR */
+.iEmailCadastrar {
+    top: 185px;
+}
+.iSenhaCadastrar {
+    top: 257px;
+}
+.iSenha2Cadastrar {
+    top: 331px;
+}
   
+
+
 
 /* REGISTRO */
 .registroh1 {
