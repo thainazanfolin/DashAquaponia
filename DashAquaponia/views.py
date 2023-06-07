@@ -19,20 +19,23 @@ class IndexView(TemplateView):
 
 def cadastroFormView(request):
     if request.method == 'POST':
-        email = request.POST['CadastroEmail']   
+        cadastroEmail = request.POST['CadastroEmail']   
         password = request.POST['CadastroPassword']
         confirmPassword = request.POST['ConfirmCadastroPassword']
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+
         if password != confirmPassword:
             return render(request, 'login.html', {'errors' : ['Senhas divergentes.']})
         
-        user = User.objects.filter(email=email).first()
+        user = User.objects.filter(email=cadastroEmail).first()
         if user:
             return render(request, 'login.html', {'errors': ['Email já cadastrado.']})
         
         user = User.objects.create(
-            email = email,
-            first_name = 'Teste',
-            last_name = 'Teste2',
+            email = cadastroEmail,
+            first_name = first_name,
+            last_name = last_name,
             password = password,
         )
         return redirect('login.html')
@@ -42,6 +45,8 @@ def loginFormView(request):
         email = request.POST['email']
         password = request.POST['password']
         user = authenticate(request, email=email, password=password)
+
+        
         if user is not None:
             login(request, user)
             return redirect('/')
@@ -49,6 +54,67 @@ def loginFormView(request):
             return render(request, 'login.html', {'errors': ['Email ou senha inválidos.']})
     return render(request, 'login.html')
 
+def LoginCadastroView(request):
+    idUsuario = request.user.id
+    # print(idUsuario)
+    if idUsuario is None :
+        if 'entrar' in request.POST:
+            entrar = request.POST['entrar']
+        else:
+            entrar = False
+
+        if entrar:
+            if request.method == 'POST':
+                Entraremail = request.POST['email']
+                password = request.POST['password']
+                user = authenticate(request, email=Entraremail, password=password)
+
+                if user is not None:
+                    login(request, user)
+                    return redirect('/')
+                elif user is None:
+                    return render(request, 'login.html', {'errors': ['Email ou senha inválidos.']})
+            return render(request, 'login.html')
+        
+        # cadastrar = request.POST.get('cadastrar', False)
+
+        if 'cadastrar' in request.POST:
+            cadastrar = request.POST['cadastrar']
+        else:
+            cadastrar = False
+            print('teste')
+        
+        if cadastrar:
+            if request.method == 'POST':
+                cadastroEmail = request.POST['CadastroEmail']   
+                InsertPassword = request.POST['CadastroPassword']
+                confirmPassword = request.POST['ConfirmCadastroPassword']
+                first_name = request.POST['first_name']
+                last_name = request.POST['last_name']
+                
+                if InsertPassword != confirmPassword:
+                    return render(request, 'login.html', {'errors' : ['Senhas divergentes.']})
+                
+                user = User.objects.filter(email=cadastroEmail).first()
+                if user:
+                    return render(request, 'login.html', {'errors': ['Email já cadastrado.']})
+                
+                User.objects.create_user(
+                    email = cadastroEmail,
+                    password = InsertPassword,
+                    first_name = first_name,
+                    last_name = last_name,
+                )
+        # elif cadastrar == False:
+        #     print('testeCadastro')
+        # if entrar == False:
+        #     print('testeEntrar')
+        return render(request, 'login.html')
+    if idUsuario:
+        return redirect('/')
+    # return redirect('login.html')
+
+        
 
 def DashAlface(request):
     idUsuario = request.user.id

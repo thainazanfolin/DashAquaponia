@@ -26,7 +26,7 @@
         {% endfor %}
     {% endif %}
 
-    <form method="post" id="entrar"> 
+    <form method="post" name="entrar" id="entrar"> 
         {% csrf_token %}
       <input type="text" placeholder="Email" id="email" name="email" required />
       <i class="fas fa-envelope iEmail"></i>
@@ -39,14 +39,15 @@
       <div class="esqueceu_senha">
         <a href="" id="esqueceusenha">Esqueci minha senha</a>
       </div>
-      <button type="submit">Entrar</button>
+      <button type="submit"><input type="submit" id="entrar" name="entrar"></button>
+      <!-- <button type="submit">Entrar</button> -->
     </form>
 
-    <form method="post" id="cadastrar"> 
+    <form method="post" name="cadastrar" id="cadastrar"> 
         {% csrf_token %}
 
-      <input type="text" placeholder="Primeiro nome" required />
-      <input type="text" placeholder="Segundo nome" required />
+      <input type="text" placeholder="Primeiro nome" id="first_name" name="first_name" required />
+      <input type="text" placeholder="Segundo nome" id="last_name" name="last_name" required />
       <input type="text" placeholder="Email" id="CadastroEmail" name="CadastroEmail" required />
       <i class="fas fa-envelope iEmailCadastrar"></i>
       <input type="password" placeholder="Senha" id="CadastroPassword" name="CadastroPassword" required />
@@ -61,7 +62,8 @@
         <input type="checkbox" required />
         <span>Aceitar termos</span>
       </div>
-      <button type="submit">Cadastrar</button>
+      <button type="submit"><input type="submit" id="cadastrar" name="cadastrar"></button>
+      <!-- <button type="submit">Cadastrar</button> -->
     </form>
   </div>
 
