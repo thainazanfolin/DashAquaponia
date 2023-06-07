@@ -16,7 +16,27 @@ class IndexView(TemplateView):
     def get(self, request):
         # template_name = "index.html"
         return render(request, 'index.html')
-    
+
+def cadastroFormView(request):
+    if request.method == 'POST':
+        email = request.POST['CadastroEmail']   
+        password = request.POST['CadastroPassword']
+        confirmPassword = request.POST['ConfirmCadastroPassword']
+        if password != confirmPassword:
+            return render(request, 'login.html', {'errors' : ['Senhas divergentes.']})
+        
+        user = User.objects.filter(email=email).first()
+        if user:
+            return render(request, 'login.html', {'errors': ['Email já cadastrado.']})
+        
+        user = User.objects.create(
+            email = email,
+            first_name = 'Teste',
+            last_name = 'Teste2',
+            password = password,
+        )
+        return redirect('login.html')
+
 def loginFormView(request):
     if request.method == 'POST':
         email = request.POST['email']
@@ -33,7 +53,7 @@ def loginFormView(request):
 def DashAlface(request):
     idUsuario = request.user.id
     if len(DashModel.objects.filter(idCliente = idUsuario)) > 0:
-        print(idUsuario)
+        # print(idUsuario)
         df = pd.DataFrame(list(DashModel.objects.values(
             'dataInspecao', 
             'qtdeAlfaceColhida')
