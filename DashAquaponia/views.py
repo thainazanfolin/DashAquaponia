@@ -6,6 +6,7 @@ from django.utils.decorators import method_decorator
 from django.views.generic import TemplateView
 from .forms import DashForm
 from .models import User, DashModel
+from django.db.models import Sum as Soma
 
 import pandas as pd
 import plotly.express as px
@@ -150,10 +151,15 @@ def DashAlface(request):
         }
         return render(request, 'dash.html', contexto)
     
-
 def CadastroDash(request):
 
     data_atual = datetime.today()
+
+    somaAlface = DashModel.objects.filter(idCliente = request.user.id).aggregate(Soma('qtdeAlfaceColhida'))
+    somaAlfaceInt = 0
+    for chave in somaAlface:
+        somaAlfaceInt = somaAlface[chave]
+
     if request.method == 'POST':
         nomeCliente= request.user
         capacidadeTanque = 900
@@ -172,6 +178,7 @@ def CadastroDash(request):
         qtdeAgua = request.POST.get('qtdeAgua')
         qtdeAlfaceColhida = request.POST.get('qtdeAlfaceColhida')
         qtdeAlfacePlantada = request.POST.get('qtdeAlfacePlantada')
+        qtdeAlfaceTotal = somaAlfaceInt + int(qtdeAlfaceColhida)
         qtdePeixesTanque = request.POST.get('qtdePeixesTanque')
 
         DashModel.objects.create(
@@ -189,6 +196,7 @@ def CadastroDash(request):
             qtdeAgua = qtdeAgua,
             qtdeAlfaceColhida = qtdeAlfaceColhida,
             qtdeAlfacePlantada = qtdeAlfacePlantada,
+            qtdeAlfaceTotal = qtdeAlfaceTotal,
             qtdePeixesTanque = qtdePeixesTanque,
         )
         return redirect('/')
