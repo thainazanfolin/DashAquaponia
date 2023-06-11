@@ -153,7 +153,8 @@ def DashAlface(request):
     
 def CadastroDash(request):
 
-    data_atual = datetime.today()
+    data_atual = datetime.now()
+    data_atual_str = data_atual.strftime("%Y-%m-%d")
 
     somaAlface = DashModel.objects.filter(idCliente = request.user.id).aggregate(Soma('qtdeAlfaceColhida'))
     somaAlfaceInt = 0
@@ -180,8 +181,30 @@ def CadastroDash(request):
         qtdeAlfacePlantada = request.POST.get('qtdeAlfacePlantada')
         qtdeAlfaceTotal = somaAlfaceInt + int(qtdeAlfaceColhida)
         qtdePeixesTanque = request.POST.get('qtdePeixesTanque')
-
-        DashModel.objects.create(
+    
+        if dataInspecao == data_atual_str:
+            DashModel.objects.filter(idCliente = request.user.id,
+                                     dataInspecao = data_atual_str).update(
+                nomeCliente = str(nomeCliente),
+                idCliente = idCliente,
+                capacidadeTanque = capacidadeTanque,
+                idTanque = idTanque,
+                qtdeAlimentoPeixe = qtdeAlimentoPeixe,
+                limpezaAgua = limpezaAgua,
+                peixeMorto = peixeMorto,
+                statusTanque = statusTanque,
+                valorAlface = valorAlface,
+                valorPeixe = valorPeixe,
+                dataInspecao = dataInspecao,
+                qtdeAgua = qtdeAgua,
+                qtdeAlfaceColhida = qtdeAlfaceColhida,
+                qtdeAlfacePlantada = qtdeAlfacePlantada,
+                qtdeAlfaceTotal = 0,
+                qtdePeixesTanque = qtdePeixesTanque,
+            )
+            return redirect('/')
+        else:
+            DashModel.objects.create(
             nomeCliente = nomeCliente,
             idCliente = idCliente,
             capacidadeTanque = capacidadeTanque,
@@ -200,7 +223,6 @@ def CadastroDash(request):
             qtdePeixesTanque = qtdePeixesTanque,
         )
         return redirect('/')
-    
     if request.method == 'GET':
             form = DashForm()
     contexto = {
