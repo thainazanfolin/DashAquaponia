@@ -17,6 +17,7 @@ class DashModel(django_models.Model):
     qtdeAgua = models.FloatField(verbose_name="qtdeAgua")
     qtdeAlfaceColhida =  models.IntegerField(verbose_name="AlfaceColhido")
     qtdeAlfacePlantada = models.IntegerField(verbose_name="AlfacePlantado")
+    qtdeAlfaceTotal = models.IntegerField(verbose_name="TotalAlfaceColhido")
     qtdePeixesTanque = models.IntegerField(verbose_name="PeixesNoTanque")
 
     class Meta:
