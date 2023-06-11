@@ -118,8 +118,18 @@ def DashAlface(request):
             .filter(idCliente = idUsuario)))
         
         hist_fig = px.histogram(df, x='dataInspecao', y ='qtdeAlfaceColhida')
-        line_fig = px.line(df, x='dataInspecao', y ='qtdeAlfaceColhida')
-        bar_fig = px.bar(df, x='dataInspecao', y ='qtdeAlfaceColhida')
+        line_fig = px.line(df, x='dataInspecao', y ='qtdeAlfaceColhida',
+                           labels = {
+                               'dataInspecao': "Data",
+                               'qtdeAlfaceColhida' : "Quantidade de Alface"
+                           },
+                           title = "Quantidade de Alface Colhido | Data")
+        bar_fig = px.bar(df, x='dataInspecao', y ='qtdeAlfaceColhida',
+                         labels = {
+                               'dataInspecao': "Data",
+                               'qtdeAlfaceColhida' : "Quantidade de Alface"
+                           },
+                           title = "Quantidade de Alface Colhido | Data")
 
         chart_hist = hist_fig.to_html()
         chart_line = line_fig.to_html()
