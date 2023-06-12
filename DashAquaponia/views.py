@@ -7,6 +7,7 @@ from django.views.generic import TemplateView
 from .forms import DashForm
 from .models import User, DashModel
 from django.db.models import Sum as Soma
+from django.contrib import messages
 
 import pandas as pd
 import plotly.express as px
@@ -16,7 +17,17 @@ import plotly.express as px
 class IndexView(TemplateView):
     def get(self, request):
         # template_name = "index.html"
+        # contexto = {
+        #     "logout" : logout(request),
+        # }
+
         return render(request, 'index.html')
+    
+def logoutView(request):
+    messages.success(request,"Logout realizado!")
+    logout(request)
+    return redirect('/')
+
 
 # def cadastroFormView(request):
 #     if request.method == 'POST':
