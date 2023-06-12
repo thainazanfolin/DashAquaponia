@@ -1,71 +1,83 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro Colheita</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://kit.fontawesome.com/0edc8eb879.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon-16x16.png' %}">
 </head>
 <body>
     <form action={% url 'DashAquaponia:registro' %} method="POST">
         {% csrf_token %}
-        <h1>Registro Colheita</h1>
-        <div>
-            <label for="qtdeAlimentoPeixe" >Quantidade de Alimento/Dia</label>
-            <input type="text" id="qtdeAlimentoPeixe" name="qtdeAlimentoPeixe" required>
-        </div>
-        <div>
-            <label for="limpezaAgua">Houve limpeza do tanque?</label>
-            <select name="limpezaAgua" id="limpezaAgua">
-                <option value="Sim">Sim</option>
-                <option value="Não">Não</option>
-            </select>
-        </div>
-        <div>
-            <label for="statusTanque" >Status do Tanque</label>
-            <input type="text" id="statusTanque" name="statusTanque" placeholder="Sem danos" required>
-        </div>
-        <div>
-            <label for="valorAlface" >Valor de venda do alface</label>
-            <input type="number" id="valorAlface" name="valorAlface" required>
-        </div>
-        <div>
-            <label for="valorPeixe" >Valor de venda do peixe</label>
-            <input type="number" id="valorPeixe" name="valorPeixe" required>
-        </div>
-        <div>
-            <label for="checkVenda">Houve venda de peixes?</label>
-            <input type="checkbox" name="checkVenda" id="checkVenda">
-        <div>
-            <label for="qtdeVendaPeixe">Quantidade de peixes vendidos</label>
-            <input type="number" name="qtdeVendaPeixe" id="qtdeVendaPeixe">
-        </div>
-        </div>
-        <div>
-            <label for="dataInspecao" >Data de inspeção do tanque</label>
-            <input type="date" id="dataInspecao" name="dataInspecao" required>
-        </div>
-        <div>
-            <label for="qtdeAgua" >Quantidade de água no tanque</label>
-            <input type="number" id="qtdeAgua" name="qtdeAgua" required>
-        </div>
+        <div class="registrocontainer">
+            <h1>Registro Colheita</h1>
+            <div class="registrolabel">
+                <label for="qtdeAlimentoPeixe" >Quantidade de Alimento/Dia</label>
+                <input type="text" id="qtdeAlimentoPeixe" name="qtdeAlimentoPeixe" required>
+            </div>
+            <div class="registrolabel">
+                <label for="limpezaAgua">Houve limpeza do tanque?</label>
+                <select name="limpezaAgua" id="limpezaAgua">
+                    <option value="Sim">Sim</option>
+                    <option value="Não">Não</option>
+                </select>
+            </div>
+            <div class="registrolabel">
+                <label for="statusTanque" >Status do Tanque</label>
+            </div>
+            <div class="registrolabel">
+                <textarea name="statustanque" id="statustanque" cols="40" rows="2" placeholder="Sem danos"></textarea>
+            </div>
+            <div class="registrolabel">
+                <label for="valorAlface" >Valor de venda do alface</label>
+                <input type="number" id="valorAlface" name="valorAlface" required>
+            </div>
+            <div class="registrolabel">
+                <label for="valorPeixe" >Valor de venda do peixe</label>
+                <input type="number" id="valorPeixe" name="valorPeixe" required>
+            </div>
+            <div class="registrolabel">
+                <label for="checkVenda">Houve venda de peixes?</label>
+                <input type="checkbox" name="checkVenda" id="checkVenda">
+            <div class="registrolabel">
+                <label for="qtdeVendaPeixe">Quantidade de peixes vendidos</label>
+                <input type="number" name="qtdeVendaPeixe" id="qtdeVendaPeixe">
+            </div>
+            </div>
+            <div class="registrolabel">
+                <label for="dataInspecao" >Data de inspeção do tanque</label>
+                <input type="date" id="dataInspecao" name="dataInspecao" required>
+            </div>
+            <div class="registrolabel">
+                <label for="qtdeAgua" >Quantidade de água no tanque</label>
+                <input type="number" id="qtdeAgua" name="qtdeAgua" required>
+            </div>
 
-        <div>
-            <label for="qtdeAlfaceColhida" >Quantidade de alface colhido</label>
-            <input type="number" id="qtdeAlfaceColhida" name="qtdeAlfaceColhida" required>
-        </div>
-        <div>
-            <label for="qtdeAlfacePlantada" >Quantidade de alface plantado</label>
-            <input type="number" id="qtdeAlfacePlantada" name="qtdeAlfacePlantada" required>
-        </div>
-        <div>
-            <label for="qtdePeixesTanque" >Quantidade de peixes no tanque</label>
-            <input type="number" id="qtdePeixesTanque" name="qtdePeixesTanque" required>
-        </div>
+            <div class="registrolabel">
+                <label for="qtdeAlfaceColhida" >Quantidade de alface colhido</label>
+                <input type="number" id="qtdeAlfaceColhida" name="qtdeAlfaceColhida" required>
+            </div>
+            <div class="registrolabel">
+                <label for="qtdeAlfacePlantada" >Quantidade de alface plantado</label>
+                <input type="number" id="qtdeAlfacePlantada" name="qtdeAlfacePlantada" required>
+            </div>
+            <div class="registrolabel">
+                <label for="qtdePeixesTanque" >Quantidade de peixes no tanque</label>
+                <input type="number" id="qtdePeixesTanque" name="qtdePeixesTanque" required>
+            </div>
 
-        <button type="submit" value="Cadastro" >Enviar</button>
+            <button class="registrobtn" type="submit" value="Cadastro" >Enviar</button>
+        <div class="registrocontainer">
     </form>
 
     <script src="{% static 'js/registro.js' %}"></script>
