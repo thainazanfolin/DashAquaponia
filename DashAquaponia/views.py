@@ -184,12 +184,14 @@ def CadastroDash(request):
         elif somaAlfaceInt != None:
             qtdeAlfaceTotal = somaAlfaceInt + int(qtdeAlfaceColhida)
         qtdePeixesTanque = request.POST.get('qtdePeixesTanque')
-    
 
-        if len(DashModel.objects.filter(idCliente = request.user.id)) > 0:
-            if dataInspecao == data_atual_str:
-                DashModel.objects.filter(idCliente = request.user.id,
-                                        dataInspecao = data_atual_str).update(
+        print()
+
+        # if len(DashModel.objects.filter(idCliente = request.user.id)) > 0:
+        if dataInspecao == data_atual_str:
+            print("teste data igual")
+            DashModel.objects.filter(idCliente = request.user.id,
+                                    dataInspecao = data_atual_str).update(
                     nomeCliente = str(nomeCliente),
                     idCliente = idCliente,
                     capacidadeTanque = capacidadeTanque,
@@ -204,12 +206,12 @@ def CadastroDash(request):
                     qtdeAgua = qtdeAgua,
                     qtdeAlfaceColhida = qtdeAlfaceColhida,
                     qtdeAlfacePlantada = qtdeAlfacePlantada,
-                    qtdeAlfaceTotal = 0,
                     qtdePeixesTanque = qtdePeixesTanque,
                 )
-                return redirect('/')
-        else:
-                DashModel.objects.create(
+            return redirect('/')
+        elif dataInspecao != data_atual_str:
+            print("teste data diferente")
+            DashModel.objects.create(
                 nomeCliente = nomeCliente,
                 idCliente = idCliente,
                 capacidadeTanque = capacidadeTanque,
@@ -226,7 +228,7 @@ def CadastroDash(request):
                 qtdeAlfacePlantada = qtdeAlfacePlantada,
                 qtdeAlfaceTotal = qtdeAlfaceTotal,
                 qtdePeixesTanque = qtdePeixesTanque,
-            )
+            )   
         return redirect('/')
     if request.method == 'GET':
             form = DashForm()
