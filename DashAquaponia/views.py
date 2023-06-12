@@ -18,42 +18,42 @@ class IndexView(TemplateView):
         # template_name = "index.html"
         return render(request, 'index.html')
 
-def cadastroFormView(request):
-    if request.method == 'POST':
-        cadastroEmail = request.POST['CadastroEmail']   
-        password = request.POST['CadastroPassword']
-        confirmPassword = request.POST['ConfirmCadastroPassword']
-        first_name = request.POST['first_name']
-        last_name = request.POST['last_name']
+# def cadastroFormView(request):
+#     if request.method == 'POST':
+#         cadastroEmail = request.POST['CadastroEmail']   
+#         password = request.POST['CadastroPassword']
+#         confirmPassword = request.POST['ConfirmCadastroPassword']
+#         first_name = request.POST['first_name']
+#         last_name = request.POST['last_name']
 
-        if password != confirmPassword:
-            return render(request, 'login.html', {'errors' : ['Senhas divergentes.']})
+#         if password != confirmPassword:
+#             return render(request, 'login.html', {'errors' : ['Senhas divergentes.']})
         
-        user = User.objects.filter(email=cadastroEmail).first()
-        if user:
-            return render(request, 'login.html', {'errors': ['Email já cadastrado.']})
+#         user = User.objects.filter(email=cadastroEmail).first()
+#         if user:
+#             return render(request, 'login.html', {'errors': ['Email já cadastrado.']})
         
-        user = User.objects.create(
-            email = cadastroEmail,
-            first_name = first_name,
-            last_name = last_name,
-            password = password,
-        )
-        return redirect('login.html')
+#         user = User.objects.create(
+#             email = cadastroEmail,
+#             first_name = first_name,
+#             last_name = last_name,
+#             password = password,
+#         )
+#         return redirect('login.html')
 
-def loginFormView(request):
-    if request.method == 'POST':
-        email = request.POST['email']
-        password = request.POST['password']
-        user = authenticate(request, email=email, password=password)
+# def loginFormView(request):
+#     if request.method == 'POST':
+#         email = request.POST['email']
+#         password = request.POST['password']
+#         user = authenticate(request, email=email, password=password)
 
         
-        if user is not None:
-            login(request, user)
-            return redirect('/')
-        else:
-            return render(request, 'login.html', {'errors': ['Email ou senha inválidos.']})
-    return render(request, 'login.html')
+#         if user is not None:
+#             login(request, user)
+#             return redirect('/')
+#         else:
+#             return render(request, 'login.html', {'errors': ['Email ou senha inválidos.']})
+#     return render(request, 'login.html')
 
 def LoginCadastroView(request):
     idUsuario = request.user.id
@@ -107,7 +107,6 @@ def LoginCadastroView(request):
     if idUsuario:
         return redirect('/')
     return render(request, 'login.html')
-
 
 def DashAlface(request):
     idUsuario = request.user.id
