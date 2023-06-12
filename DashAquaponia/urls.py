@@ -7,5 +7,5 @@ urlpatterns = [
     path('', views.IndexView.as_view(), name="index"),
     path('login/', views.LoginCadastroView, name="login"),
     path('dash/', views.DashAlface, name="dash"),
-    path('registro/', views.CadastroDash, name="registro-dash")
+    path('registro/', views.CadastroDash, name="registro")
 ]
