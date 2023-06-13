@@ -16,29 +16,14 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon-16x16.png' %}">
 </head>
-<body>
-    <nav>
-        <a class="logo" href="/">Dash Aquaponia</a>
-        <div class="mobile-menu">
-<!-- span -->   <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
-        </div>
-        <ul class="nav-list">
-        
-            </div>
-            <li class="nav-item"><a href="/dash">Dashboards</a></li>
-            <li class="nav-item"><a href="login">Entrar</a></li>
-        </ul>
-
-    </nav>
+<body class="registrobody">
     <form action={% url 'DashAquaponia:registro' %} method="POST">
         {% csrf_token %}
         <div class="registrocontainer">
             <h1>Registro Colheita</h1>
             <div class="registrolabel">
                 <label for="qtdeAlimentoPeixe" >Quantidade de Alimento/Dia</label>
-                <input type="number" id="qtdeAlimentoPeixe" name="qtdeAlimentoPeixe" required>
+                <input class="registroinput" type="number" id="qtdeAlimentoPeixe" name="qtdeAlimentoPeixe" required>
             </div>
             <div class="registrolabel">
                 <label for="limpezaAgua">Houve limpeza do tanque?</label>
@@ -55,43 +40,43 @@
             </div>
             <div class="registrolabel">
                 <label for="valorAlface" >Valor de venda do alface</label>
-                <input type="number" id="valorAlface" name="valorAlface" required>
+                <input class="registroinput" type="number" id="valorAlface" name="valorAlface" required>
             </div>
             <div class="registrolabel">
                 <label for="valorPeixe" >Valor de venda do peixe</label>
-                <input type="number" id="valorPeixe" name="valorPeixe" required>
+                <input class="registroinput" type="number" id="valorPeixe" name="valorPeixe" required>
             </div>
             <div class="registrolabel">
                 <label for="checkVenda">Houve venda de peixes?</label>
-                <input type="checkbox" name="checkVenda" id="checkVenda">
+                <input class="registroinput" type="checkbox" name="checkVenda" id="checkVenda">
             <div class="registrolabel">
                 <label for="qtdeVendaPeixe">Quantidade de peixes vendidos</label>
-                <input type="number" name="qtdeVendaPeixe" id="qtdeVendaPeixe">
+                <input class="registroinput" type="number" name="qtdeVendaPeixe" id="qtdeVendaPeixe">
             </div>
             </div>
             <div class="registrolabel">
                 <label for="dataInspecao" >Data de inspeção do tanque</label>
-                <input type="date" id="dataInspecao" name="dataInspecao" required>
+                <input class="registroinput" type="date" id="dataInspecao" name="dataInspecao" required>
             </div>
             <div class="registrolabel">
                 <label for="qtdeAgua" >Quantidade de água no tanque</label>
-                <input type="number" id="qtdeAgua" name="qtdeAgua" required>
+                <input class="registroinput" type="number" id="qtdeAgua" name="qtdeAgua" required>
             </div>
 
             <div class="registrolabel">
                 <label for="qtdeAlfaceColhida" >Quantidade de alface colhido</label>
-                <input type="number" id="qtdeAlfaceColhida" name="qtdeAlfaceColhida" required>
+                <input class="registroinput" type="number" id="qtdeAlfaceColhida" name="qtdeAlfaceColhida" required>
             </div>
             <div class="registrolabel">
                 <label for="qtdeAlfacePlantada" >Quantidade de alface plantado</label>
-                <input type="number" id="qtdeAlfacePlantada" name="qtdeAlfacePlantada" required>
+                <input class="registroinput" type="number" id="qtdeAlfacePlantada" name="qtdeAlfacePlantada" required>
             </div>
             <div class="registrolabel">
                 <label for="qtdePeixesTanque" >Quantidade de peixes no tanque</label>
-                <input type="number" id="qtdePeixesTanque" name="qtdePeixesTanque" required>
+                <input class="registroinput" type="number" id="qtdePeixesTanque" name="qtdePeixesTanque" required>
             </div>
             <button class="registrobtn" type="submit" value="Cadastro" >Enviar</button>
-        <div class="registrocontainer">
+        </div>
     </form>
 
     <script src="{% static 'js/registro.js' %}"></script>

@@ -32,7 +32,7 @@
         {% endfor %}
     {% endif %}
 
-    <form method="post" name="entrar" id="entrar"> 
+    <form class="formlogin" method="post" name="entrar" id="entrar"> 
         {% csrf_token %}
       <input type="text" placeholder="Email" id="email" name="email" required />
       <i class="fas fa-envelope iEmail"></i>
@@ -45,12 +45,12 @@
       <div class="esqueceu_senha">
         <a href="" id="esqueceusenha">Esqueci minha senha</a>
       </div>
-      <button type="submit"><input type="submit" id="entrar" name="entrar"></button>
+      <button class="loginbutton" type="submit"><input type="submit" id="entrar" name="entrar"></button>
 
       <!-- <button type="submit">Entrar</button> -->
     </form>
 
-    <form method="post" name="cadastrar" id="cadastrar"> 
+    <form class="formlogin" method="post" name="cadastrar" id="cadastrar"> 
         {% csrf_token %}
 
       <input type="text" placeholder="Primeiro nome" id="first_name" name="first_name" required />
@@ -70,7 +70,7 @@
         <span>Aceitar termos</span>
       </div>
 
-      <button type="submit"><input type="submit" id="cadastrar" name="cadastrar"></button>
+      <button class="loginbutton" type="submit"><input type="submit" id="cadastrar" name="cadastrar"></button>
       <!-- <button type="submit">Cadastrar</button> -->
     </form>
   </div>

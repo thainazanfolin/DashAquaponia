@@ -522,7 +522,7 @@ footer {
 
 /* LOGIN */
 
-.loginbody, .registrobody {
+.loginbody {
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -545,7 +545,7 @@ footer {
     box-shadow: 0 0 20px 0 var(--dark);
 }
 
-form {
+.formlogin{
     position: absolute;
     margin-top: 80px;
     transition: .5s;
@@ -600,7 +600,7 @@ input[type="submit"] {
     cursor: pointer;
 }
 
-button[type="submit"] {
+.loginbutton {
     background: var(--verdeesc);
     color: white;
     border-radius: 30px;
@@ -669,51 +669,121 @@ i {
 
 
 /* REGISTRO */
+
+.registrobody {
+    min-width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--cinza);
+    overflow: hidden;
+    background: var(--white);
+}
+
 .registroh1 {
     text-align: center;
 
 }
 
 .registrocontainer {
+    margin: 5px;
     padding: 5px;
-    width: 500px;
-    height: 700px;
+    width: 40vw;
+    height: 90vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
     overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 0 20px 0 var(--dark);
+    border-radius: 10px ;
+    box-shadow: 1px 1px 4px 1px var(--dark);
+    background: var(--cinza);
 }
 
 .registrolabel {
+    font-weight: bold;
     border: none;
-    margin-top: 10px;
+    margin-top: 5px;
+    margin: auto;
     border-radius: 60px;
-    padding: 8px 0 8px 35px;
+    padding: 8px 0 5px 50px;
     outline: none;
-    width: 100%;
-  }
+    display: flex;
+    width: 50vw;
+}
   
 .registrobtn{
     background: var(--verdeesc);
     color: white;
+    font-weight: bold;
     border-radius: 30px;
     width: 50%;
     border: none;
     outline: none;
     padding: 8px 0px;
     font-size: 15px;
-    margin-top: 20px;
+    margin-top: 5%;
     cursor: pointer;
   }
 
-.registrolabeldescricao {
+.registroinput, #peixeMorto, #limpezaAgua, #statustanque {
+    margin-left: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+    height: 25px;
+    border: none;
+  
+  }
+  
+  @media only screen and (min-width: 1000px) {
+    .registrocontainer {
+      width: 40vw;
+      height: auto;
+    }
+  }
+  
+  @media only screen and (min-width: 900px) {
+    .registrocontainer {
+      width: 50vw;  
+      height: auto;
+    }
+  }
+  
+  @media only screen and (max-width: 900px) {
+    .registrocontainer {
+      width: 70vw;
+      font-size: smaller;
+      height: auto;
+      
+    }
+  
+    .registrobody {
+      display: block;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      margin: 20% 14%;
+      
+    }
+  }
+  
+  @media only screen and (max-width: 600px) {
+    .registrocontainer {
+      font-size: smaller;
+    }
+  }
+  
+  @media only screen and (max-width: 596px) {
+    .registrocontainer {
+      font-size: xx-small;
+      height: auto;
+    }
+  }
+/* .registrolabeldescricao {
     border: none;
     margin-top: 0px;
     border-radius: 60px;
     padding: 8px 0 8px 35px;
     outline: none;
     width: 100%;
-}
+} */
