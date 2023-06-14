@@ -16,6 +16,25 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon-16x16.png' %}">
 </head>
+<body>
+    <nav>
+        <a class="logo" href="/">Dash Aquaponia</a>
+        <div class="mobile-menu">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <ul class="nav-list">
+            <li class="nav-item"><a href="/dash">Dashboards</a></li>
+            <li class="nav-item"><a href="contato">Contato</a></li>
+            <li class="nav-item"><a href="">Entrar</a></li>
+        </ul>
+
+        <!-- <div class="btn-expandir">
+            <button>perfil</button>
+        </div> -->
+</nav>
+</body>
 <body class="registrobody">
     <form action={% url 'DashAquaponia:registro' %} method="POST">
         {% csrf_token %}
