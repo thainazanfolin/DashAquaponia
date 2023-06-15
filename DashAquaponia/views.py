@@ -17,9 +17,6 @@ import plotly.express as px
 class IndexView(TemplateView):
     def get(self, request):
         # template_name = "index.html"
-        # contexto = {
-        #     "logout" : logout(request),
-        # }
 
         return render(request, 'index.html')
     
@@ -28,43 +25,10 @@ def logoutView(request):
     logout(request)
     return redirect('/')
 
+class DashBoardView(TemplateView):
+    def get(self, request):
+        return render(request,'servicos.html')
 
-# def cadastroFormView(request):
-#     if request.method == 'POST':
-#         cadastroEmail = request.POST['CadastroEmail']   
-#         password = request.POST['CadastroPassword']
-#         confirmPassword = request.POST['ConfirmCadastroPassword']
-#         first_name = request.POST['first_name']
-#         last_name = request.POST['last_name']
-
-#         if password != confirmPassword:
-#             return render(request, 'login.html', {'errors' : ['Senhas divergentes.']})
-        
-#         user = User.objects.filter(email=cadastroEmail).first()
-#         if user:
-#             return render(request, 'login.html', {'errors': ['Email já cadastrado.']})
-        
-#         user = User.objects.create(
-#             email = cadastroEmail,
-#             first_name = first_name,
-#             last_name = last_name,
-#             password = password,
-#         )
-#         return redirect('login.html')
-
-# def loginFormView(request):
-#     if request.method == 'POST':
-#         email = request.POST['email']
-#         password = request.POST['password']
-#         user = authenticate(request, email=email, password=password)
-
-        
-#         if user is not None:
-#             login(request, user)
-#             return redirect('/')
-#         else:
-#             return render(request, 'login.html', {'errors': ['Email ou senha inválidos.']})
-#     return render(request, 'login.html')
 
 def LoginCadastroView(request):
     idUsuario = request.user.id
@@ -119,16 +83,15 @@ def LoginCadastroView(request):
         return redirect('/')
     return render(request, 'login.html')
 
-def DashAlface(request):
+def DashModificar(request):
     idUsuario = request.user.id
-    if len(DashModel.objects.filter(idCliente = idUsuario)) > 0:
+    if len(DashModel.objects.filter(idCliente = 1)) > 0:
         # print(idUsuario)
         df = pd.DataFrame(list(DashModel.objects.values(
             'dataInspecao', 
             'qtdeAlfaceColhida')
-            .filter(idCliente = idUsuario)))
+            .filter(idCliente = 1)))
         
-        hist_fig = px.histogram(df, x='dataInspecao', y ='qtdeAlfaceColhida')
         line_fig = px.line(df, x='dataInspecao', y ='qtdeAlfaceColhida',
                            labels = {
                                'dataInspecao': "Data",
@@ -142,12 +105,10 @@ def DashAlface(request):
                            },
                            title = "Quantidade de Alface Colhido | Data")
 
-        chart_hist = hist_fig.to_html()
         chart_line = line_fig.to_html()
         chart_bar = bar_fig.to_html()
 
         contexto = {
-            'dash_hist' : chart_hist,
             'dash_line' : chart_line,
             'dash_bar' : chart_bar
         }
@@ -155,7 +116,44 @@ def DashAlface(request):
     else:
         sem_info = "Sem informações no banco para este usuário"
         contexto = {
-            'dash_hist' : sem_info,
+            'dash_line' : sem_info,
+            'dash_bar' : sem_info
+        }
+        return render(request, 'dash.html', contexto)
+
+def DashAlfacePadrão(request):
+    idUsuario = request.user.id
+    if len(DashModel.objects.filter(idCliente = 1)) > 0:
+        # print(idUsuario)
+        df = pd.DataFrame(list(DashModel.objects.values(
+            'dataInspecao', 
+            'qtdeAlfaceColhida')
+            .filter(idCliente = 1)))
+        
+        line_fig = px.line(df, x='dataInspecao', y ='qtdeAlfaceColhida',
+                           labels = {
+                               'dataInspecao': "Data",
+                               'qtdeAlfaceColhida' : "Quantidade de Alface"
+                           },
+                           title = "Quantidade de Alface Colhido | Data")
+        bar_fig = px.bar(df, x='dataInspecao', y ='qtdeAlfaceColhida',
+                         labels = {
+                               'dataInspecao': "Data",
+                               'qtdeAlfaceColhida' : "Quantidade de Alface"
+                           },
+                           title = "Quantidade de Alface Colhido | Data")
+
+        chart_line = line_fig.to_html()
+        chart_bar = bar_fig.to_html()
+
+        contexto = {
+            'dash_line' : chart_line,
+            'dash_bar' : chart_bar
+        }
+        return render(request, 'dash.html', contexto)
+    else:
+        sem_info = "Sem informações no banco para este usuário"
+        contexto = {
             'dash_line' : sem_info,
             'dash_bar' : sem_info
         }
