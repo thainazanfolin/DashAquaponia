@@ -122,12 +122,11 @@ def DashModificar(request):
 
 def DashAlfacePadrão(request):
     idUsuario = request.user.id
-    if len(DashModel.objects.filter(idCliente = 1)) > 0:
-        # print(idUsuario)
+    if len(DashModel.objects.filter(idCliente = idUsuario)) > 0:
         df = pd.DataFrame(list(DashModel.objects.values(
             'dataInspecao', 
             'qtdeAlfaceColhida')
-            .filter(idCliente = 1)))
+            .filter(idCliente = idUsuario)))
         
         line_fig = px.line(df, x='dataInspecao', y ='qtdeAlfaceColhida',
                            labels = {
