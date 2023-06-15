@@ -257,3 +257,6 @@ def CadastroDash(request):
         'form' : form
     }
     return render(request, 'registro.html', contexto)
+
+def ContatoView(request):
+    return render(request, 'contato.html')

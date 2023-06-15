@@ -9,6 +9,7 @@ urlpatterns = [
     path('dash/', views.DashAlfacePadrão, name="dash"),
     path('servicos/', views.DashBoardView.as_view(), name="servicos"),
     path('registro/', views.CadastroDash, name="registro"),
+    path('contato/', views.ContatoView, name="contato"),
     path('logout/', views.logoutView, name="logout"),
     # path('CrescimentoAlface/', views.DashAlface, name="dash"),
     
