@@ -787,3 +787,76 @@ i {
     outline: none;
     width: 100%;
 } */
+
+/* SERVICOS */
+
+.servicosbody {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.servicoscontainer {
+    box-shadow: 8px 10px 5px #0003;
+    width: 50%;
+    max-width: 500px;
+    border-radius: 5px 5px;
+    padding: 10px;
+    margin: auto 5px;
+
+}
+.servicoscontent {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 50vh;
+}
+.accordion_item {
+    border-radius: 5px;
+    margin-top: 12vh;
+}
+.accordion_item:hover {
+    opacity: 0.9;
+}
+.accordion_header {
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+  }
+.accordion_content {
+    margin-left: 50px;
+    margin-right: 15px;
+    overflow: hidden;
+    height: 0;
+    transition: all .5s ease;
+    font-size: 14px;
+    
+}
+.active {
+    padding-bottom: 10px;
+}
+.servicosspan, .servicos_icon {
+    color: var(--verdeesc);
+    font-weight: 600;
+}
+#servicos_id_vendas, #servicos_id_custos, #servicos_span_vendas, #servicos_span_custos {
+    color: var(--white);
+    font-weight: 600;
+}
+.servicos_p {
+    color: white;
+    text-align: justify;
+}
+.servicos-btn {
+    padding: 15px 20px;
+    width: 35%;
+    background: var(--verdeesc);
+    color: var(--white);
+    border-radius: 10px;
+    font-weight: 500;
+    transition: all 0.5s;
+    border: none;
+    cursor: pointer;
+}

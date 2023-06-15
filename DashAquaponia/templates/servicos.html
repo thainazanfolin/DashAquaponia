@@ -1,0 +1,128 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://kit.fontawesome.com/0edc8eb879.js" crossorigin="anonymous"></script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon-16x16.png' %}">
+</head>
+<body class="servicosbody">
+    <header>
+        <nav>
+            <a class="logo" href="/">Dash Aquaponia</a>
+            <div class="mobile-menu">
+<!-- span -->   <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <ul class="nav-list">
+                <div class="dropdown">
+                    <button class="dropbtn">Nossas soluções
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="">Monitoramento</a>
+                        {% comment %} <a href="">Monitoramento</a>
+                        <a href="">Monitoramento</a> {% endcomment %}
+                    </div>
+                </div>
+                <li class="nav-item"><a href="registro">Registro</a></li>
+                <li class="nav-item"><a href="dash">Dashboards</a></li>
+                <li class="nav-item"><a href="contato">Contato</a></li>
+                <li class="nav-item"><a href="{% url 'DashAquaponia:logout' %}">Logout</a></li>
+            </ul>
+
+            <!-- <div class="btn-expandir">
+                <button>perfil</button>
+            </div> -->
+        </nav>
+    </header>
+
+    <div class="servicoscontainer" style="background-image: url({% static 'img/wepik-export-2023061423161595jm.jpeg' %});">
+        <div class="servicoscontent">
+          <div class="accordion_item" style="background: white;">
+            <div class="accordion_header">
+              <span class="servicosspan">
+                Crescimento
+              </span>
+              <div class="servicos_icon">
+                +
+              </div>
+            </div>
+  
+            <div class="accordion_content">
+              <a href="servicos1.html"><button class="servicos-btn">Produção de Alface</button></a>
+              <a href="servicos2.html"><button class="servicos-btn">Produção de Peixe</button></a>
+            </div>
+          </div>
+          
+          
+          <div class="accordion_item" style="background: var(--dark2);">
+            <div class="accordion_header">
+              <span class="servicosspan" id="servicos_span_custos">
+                Custos
+              </span>
+              <div class="servicos_icon" id="servicos_id_custos">
+                +
+              </div>
+            </div>
+  
+            <div class="accordion_content">
+              <a href="servicos3.html"><button class="servicos-btn">Água</button></a>
+              <a href="servicos4.html"><button class="servicos-btn">Energia</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="servicoscontainer" style="background-image: url({% static 'img/wepik-export-2023061423161595jm.jpeg' %});">
+        <div class="servicoscontent">
+          <div class="accordion_item" style="background: var(--dark2);">
+            <div class="accordion_header">
+              <span class="servicosspan" id="servicos_span_vendas">
+                Vendas
+              </span>
+              <div class="servicos_icon" id="servicos_id_vendas">
+                +
+              </div>
+            </div>
+  
+            <div class="accordion_content">
+              <a href="servicos5.html"><button class="servicos-btn">Alface</button></a>
+              <a href="servicos6.html"><button class="servicos-btn">Peixe</button></a>
+            </div>
+          </div>
+          
+          
+          <div class="accordion_item" style="background: white;">
+            <div class="accordion_header">
+              <span class="servicosspan">
+                Saúde do Sistema
+              </span>
+              <div class="servicos_icon">
+                +
+              </div>
+            </div>
+  
+            <div class="accordion_content">
+              <a href="servicos7.html"><button class="servicos-btn">Temperatura da Água</button></a>
+              <a href="servicos8.html"><button class="servicos-btn">Quantidade de Amônia na Água</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <script src="{% static 'js/servicos.js' %}"></script>
+    <script src="{% static 'js/mobile_navbar.js' %}"></script>
+</body>
+</html>
