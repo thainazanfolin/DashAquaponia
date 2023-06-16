@@ -61,6 +61,9 @@ class User(AbstractBaseUser):
     
     def get_full_name(self):
         return f'{self.first_name} {self.last_name}'
+    
+    def get_email(self):
+        return self.email
 
     def get_id(self):
         return self.id

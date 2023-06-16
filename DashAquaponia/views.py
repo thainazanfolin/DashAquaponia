@@ -260,3 +260,12 @@ def CadastroDash(request):
 
 def ContatoView(request):
     return render(request, 'contato.html')
+
+def PerfilView(request):
+    loggedUserId = request.user.id
+    userInfo = User.objects.get(id = loggedUserId)
+    contexto = {
+        'fullName': userInfo.get_full_name(),
+        'email': userInfo.get_email()
+    }
+    return render(request, 'perfil.html', contexto)
