@@ -1,9 +1,14 @@
 from django.urls import path, include
+from rest_framework import routers
 from . import views
 
 app_name = 'DashAquaponia'
 
+router = routers.DefaultRouter()
+router.register(r'DashModel', views.DashModelViewSet)
+
 urlpatterns = [
+    path('api/', include(router.urls)),
     path('', views.IndexView.as_view(), name="index"),
     path('login/', views.LoginCadastroView, name="login"),
     path('dash/', views.DashAlfacePadrão, name="dash"),

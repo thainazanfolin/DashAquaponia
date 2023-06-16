@@ -1,8 +1,9 @@
 from rest_framework import serializers
 
-from .models import DashModel
+from .models import DashModel, User
 
-class HeroSerializer(serializers.HyperlinkedModelSerializer):
+class DashSerializer(serializers.ModelSerializer):
     class Meta:
         model = DashModel
-        fields = ('qtdeAlimentoPeixe', 'limpezaAgua', 'peixeMorto', 'capacidadeTanque', 'nomeCliente', 'statusTanque', 'valorAlface', 'valorPeixe', 'dataInspecao', 'idCliente', 'idTanque', 'qtdeAgua', 'qtdeAlfaceColhida', 'qtdeAlfacePlantada', 'qtdePeixesTanque')
+        # fields = ('qtdeAlimentoPeixe', 'limpezaAgua', 'peixeMorto', 'capacidadeTanque', 'nomeCliente', 'statusTanque', 'valorAlface', 'valorPeixe', 'dataInspecao', 'idCliente', 'idTanque', 'qtdeAgua', 'qtdeAlfaceColhida', 'qtdeAlfacePlantada', 'qtdePeixesTanque')
+        fields = '__all__'

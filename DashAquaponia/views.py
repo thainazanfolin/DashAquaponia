@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.utils.decorators import method_decorator
 from django.views.generic import TemplateView
+from rest_framework import viewsets
+from .serializers import DashSerializer
 from .forms import DashForm
 from .models import User, DashModel
 from django.db.models import Sum as Soma
@@ -278,3 +280,7 @@ def PerfilView(request):
         'email': userInfo.get_email(),
     }
     return render(request, 'perfil.html', contexto)
+
+class DashModelViewSet(viewsets.ModelViewSet):
+    queryset = DashModel.objects.all()
+    serializer_class = DashSerializer
