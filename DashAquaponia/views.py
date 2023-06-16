@@ -264,8 +264,17 @@ def ContatoView(request):
 def PerfilView(request):
     loggedUserId = request.user.id
     userInfo = User.objects.get(id = loggedUserId)
+
+    if request.method == 'POST':
+        userInfo.first_name = request.POST.get('first-name')
+        userInfo.last_name = request.POST.get('last-name')
+        userInfo.email = request.POST.get('email')
+        userInfo.save()
+        return redirect('/perfil')
+
     contexto = {
-        'fullName': userInfo.get_full_name(),
-        'email': userInfo.get_email()
+        'firstName': userInfo.get_short_name(),
+        'lastName': userInfo.get_last_name(),
+        'email': userInfo.get_email(),
     }
     return render(request, 'perfil.html', contexto)
