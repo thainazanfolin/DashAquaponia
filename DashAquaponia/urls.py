@@ -11,10 +11,14 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('', views.IndexView.as_view(), name="index"),
     path('login/', views.LoginCadastroView, name="login"),
-    path('dash/', views.DashAlfacePadrão, name="dash"),
-    path('servicos/', views.DashBoardView.as_view(), name="servicos"),
-    path('registro/', views.CadastroDash, name="registro"),
-    path('contato/', views.ContatoView, name="contato"),
+    path('home', views.HomeView.as_view(), name="home"),    
+
+    path('dashpadrao/', views.DashAlfacePadrão.as_view(), name="dashpadrao"),    
+    path('dash/', views.DashModificar.as_view(), name="dash"),
+    path('servicos/', views.ServicosView.as_view(), name="servicos"),
+    path('registro/', views.CadastroDash.as_view(), name="registro"),
+
+
     path('perfil/', views.PerfilView, name="perfil"),
     path('logout/', views.logoutView, name="logout"),
     # path('CrescimentoAlface/', views.DashAlface, name="dash"),

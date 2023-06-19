@@ -18,15 +18,14 @@
 </head>
 <body>
     <nav>
-        <a class="logo" href="/">Dash Aquaponia</a>
+        <a class="logo" href="/home">Dash Aquaponia</a>
         <div class="mobile-menu">
             <div class="line"></div>
             <div class="line"></div>
             <div class="line"></div>
         </div>
         <ul class="nav-list">
-            <li class="nav-item"><a href="/dash">Dashboards</a></li>
-            <li class="nav-item"><a href="/contato">Contato</a></li>
+            <li class="nav-item"><a href="{% url 'DashAquaponia:servicos' %}">Dashboards</a></li>
             <li class="nav-item"><a href="{% url 'DashAquaponia:logout' %}">Logout</a></li>
         </ul>
 

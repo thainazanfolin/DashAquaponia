@@ -16,22 +16,29 @@ import plotly.express as px
 
 
 @method_decorator(login_required, name='dispatch')
-class IndexView(TemplateView):
+class HomeView(TemplateView):
     def get(self, request):
         # template_name = "index.html"
+        return render(request, 'home.html')
 
-        return render(request, 'index.html')
-    
+class IndexView(TemplateView):
+    def get(self, request):
+        return render(request,'index.html')
+
 def logoutView(request):
     messages.success(request,"Logout realizado!")
     logout(request)
     return redirect('/')
 
-class DashBoardView(TemplateView):
+class ServicosView(TemplateView):
     def get(self, request):
-        return render(request,'servicos.html')
+        idUsuario = request.user.id
 
-
+        if idUsuario is None:
+            return redirect('/login/')
+        else:
+            return render(request,'servicos.html')
+    
 def LoginCadastroView(request):
     idUsuario = request.user.id
     if idUsuario is None :
@@ -48,7 +55,7 @@ def LoginCadastroView(request):
 
                 if user is not None:
                     login(request, user)
-                    return redirect('/')
+                    return redirect('/home')
                 elif user is None:
                     return render(request, 'login.html', {'errors': ['Email ou senha inválidos.']})
             return render(request, 'login.html')
@@ -84,121 +91,169 @@ def LoginCadastroView(request):
         return redirect('/')
     return render(request, 'login.html')
 
-def DashModificar(request):
-    idUsuario = request.user.id
-    if len(DashModel.objects.filter(idCliente = 1)) > 0:
-        # print(idUsuario)
-        df = pd.DataFrame(list(DashModel.objects.values(
-            'dataInspecao', 
-            'qtdeAlfaceColhida')
-            .filter(idCliente = 1)))
-        
-        line_fig = px.line(df, x='dataInspecao', y ='qtdeAlfaceColhida',
-                           labels = {
-                               'dataInspecao': "Data",
-                               'qtdeAlfaceColhida' : "Quantidade de Alface"
-                           },
-                           title = "Quantidade de Alface Colhido | Data")
-        bar_fig = px.bar(df, x='dataInspecao', y ='qtdeAlfaceColhida',
-                         labels = {
-                               'dataInspecao': "Data",
-                               'qtdeAlfaceColhida' : "Quantidade de Alface"
-                           },
-                           title = "Quantidade de Alface Colhido | Data")
+class DashModificar(TemplateView):
+    def get(self, request):
+        idUsuario = request.user.id
 
-        chart_line = line_fig.to_html()
-        chart_bar = bar_fig.to_html()
+        if idUsuario is None:
+            return redirect('/login/')
+        else:
+            if len(DashModel.objects.filter(idCliente = request.user.id)) > 0:
+                # print(idUsuario)
+                df = pd.DataFrame(list(DashModel.objects.values(
+                    'dataInspecao', 
+                    'qtdeAlfaceColhida')
+                    .filter(idCliente = request.user.id)))
+                
+                line_fig = px.line(df, x='dataInspecao', y ='qtdeAlfaceColhida',
+                                labels = {
+                                    'dataInspecao': "Data",
+                                    'qtdeAlfaceColhida' : "Quantidade de Alface"
+                                },
+                                title = "Quantidade de Alface Colhido | Data")
+                bar_fig = px.bar(df, x='dataInspecao', y ='qtdeAlfaceColhida',
+                                labels = {
+                                    'dataInspecao': "Data",
+                                    'qtdeAlfaceColhida' : "Quantidade de Alface"
+                                },
+                                title = "Quantidade de Alface Colhido | Data")
 
-        contexto = {
-            'dash_line' : chart_line,
-            'dash_bar' : chart_bar
-        }
-        return render(request, 'dash.html', contexto)
-    else:
-        sem_info = "Sem informações no banco para este usuário"
-        contexto = {
-            'dash_line' : sem_info,
-            'dash_bar' : sem_info
-        }
-        return render(request, 'dash.html', contexto)
+                chart_line = line_fig.to_html()
+                chart_bar = bar_fig.to_html()
 
-def DashAlfacePadrão(request):
-    idUsuario = request.user.id
-    if len(DashModel.objects.filter(idCliente = idUsuario)) > 0:
-        df = pd.DataFrame(list(DashModel.objects.values(
-            'dataInspecao', 
-            'qtdeAlfaceColhida')
-            .filter(idCliente = idUsuario)))
-        
-        line_fig = px.line(df, x='dataInspecao', y ='qtdeAlfaceColhida',
-                           labels = {
-                               'dataInspecao': "Data",
-                               'qtdeAlfaceColhida' : "Quantidade de Alface"
-                           },
-                           title = "Quantidade de Alface Colhido | Data")
-        bar_fig = px.bar(df, x='dataInspecao', y ='qtdeAlfaceColhida',
-                         labels = {
-                               'dataInspecao': "Data",
-                               'qtdeAlfaceColhida' : "Quantidade de Alface"
-                           },
-                           title = "Quantidade de Alface Colhido | Data")
+                contexto = {
+                    'dash_line' : chart_line,
+                    'dash_bar' : chart_bar
+                }
+                return render(request, 'dash.html', contexto)
+            else:
+                sem_info = "Sem informações no banco para este usuário"
+                contexto = {
+                    'dash_line' : sem_info,
+                    'dash_bar' : sem_info
+                }
+                return render(request, 'dash.html', contexto)
 
-        chart_line = line_fig.to_html()
-        chart_bar = bar_fig.to_html()
+class DashAlfacePadrão(TemplateView):
+    def get(self, request):
+        if len(DashModel.objects.filter(idCliente = 1)) > 0:
+            df = pd.DataFrame(list(DashModel.objects.values(
+                'dataInspecao', 
+                'qtdeAlfaceColhida')
+                .filter(idCliente = 1)))
+            
+            line_fig = px.line(df, x='dataInspecao', y ='qtdeAlfaceColhida',
+                            labels = {
+                                'dataInspecao': "Data",
+                                'qtdeAlfaceColhida' : "Quantidade de Alface"
+                            },
+                            title = "Quantidade de Alface Colhido | Data")
+            bar_fig = px.bar(df, x='dataInspecao', y ='qtdeAlfaceColhida',
+                            labels = {
+                                'dataInspecao': "Data",
+                                'qtdeAlfaceColhida' : "Quantidade de Alface"
+                            },
+                            title = "Quantidade de Alface Colhido | Data")
 
-        contexto = {
-            'dash_line' : chart_line,
-            'dash_bar' : chart_bar
-        }
-        return render(request, 'dash.html', contexto)
-    else:
-        sem_info = "Sem informações no banco para este usuário"
-        contexto = {
-            'dash_line' : sem_info,
-            'dash_bar' : sem_info
-        }
-        return render(request, 'dash.html', contexto)
+            chart_line = line_fig.to_html()
+            chart_bar = bar_fig.to_html()
+
+            contexto = {
+                'dash_line' : chart_line,
+                'dash_bar' : chart_bar
+            }
+            return render(request, 'dashpadrao.html', contexto)
+        else:
+            sem_info = "Sem informações no banco para este usuário"
+            contexto = {
+                'dash_line' : sem_info,
+                'dash_bar' : sem_info
+            }
+            return render(request, 'dashpadrao.html', contexto)
     
-def CadastroDash(request):
+class CadastroDash(TemplateView):
+    def get(self, request):
+        idUsuario = request.user.id
 
-    data_atual = datetime.now()
-    data_atual_str = data_atual.strftime("%Y-%m-%d")
+        if idUsuario is None:
+            return redirect('/login/')
+        else:
 
-    somaAlface = DashModel.objects.filter(idCliente = request.user.id).aggregate(Soma('qtdeAlfaceColhida'))
-    somaAlfaceInt = 0
-    for chave in somaAlface:
-        somaAlfaceInt = somaAlface[chave]
+            data_atual = datetime.now()
+            data_atual_str = data_atual.strftime("%Y-%m-%d")
 
-    if request.method == 'POST':
-        nomeCliente= request.user
-        capacidadeTanque = 900
-        idCliente = request.user.id
-        idTanque = 1
-        qtdeAlimentoPeixe = request.POST.get('qtdeAlimentoPeixe')
-        limpezaAgua = request.POST.get('limpezaAgua')
-        if int(request.POST.get('qtdePeixesTanque')) < 40:
-            peixeMorto = "Sim"
-        elif int(request.POST.get('qtdePeixesTanque')) >=40 :
-            peixeMorto = "Não"
-        statusTanque = request.POST.get('statusTanque')
-        valorAlface = request.POST.get('valorAlface')
-        valorPeixe = request.POST.get('valorPeixe')
-        dataInspecao = request.POST.get('dataInspecao')
-        qtdeAgua = request.POST.get('qtdeAgua')
-        qtdeAlfaceColhida = request.POST.get('qtdeAlfaceColhida')
-        qtdeAlfacePlantada = request.POST.get('qtdeAlfacePlantada')
-        if somaAlfaceInt == None:
-            qtdeAlfaceTotal = qtdeAlfaceColhida
-        elif somaAlfaceInt != None:
-            qtdeAlfaceTotal = somaAlfaceInt + int(qtdeAlfaceColhida)
-        qtdePeixesTanque = request.POST.get('qtdePeixesTanque')
+            somaAlface = DashModel.objects.filter(idCliente = request.user.id).aggregate(Soma('qtdeAlfaceColhida'))
+            somaAlfaceInt = 0
+            for chave in somaAlface:
+                somaAlfaceInt = somaAlface[chave]
 
-        #if len(DashModel.objects.filter(idCliente = request.user.id)) > 0:
-        if dataInspecao == data_atual_str and len(DashModel.objects.values('dataInspecao').filter(idCliente = request.user.id)) >= 1:
-                print("Data igual teste" + data_atual_str+ "  "+ dataInspecao)
-                DashModel.objects.filter(idCliente = request.user.id,
-                                        dataInspecao = data_atual_str).update(
-                        nomeCliente = str(nomeCliente),
+            if request.method == 'POST':
+                nomeCliente= request.user
+                capacidadeTanque = 900
+                idCliente = request.user.id
+                idTanque = 1
+                qtdeAlimentoPeixe = request.POST.get('qtdeAlimentoPeixe')
+                limpezaAgua = request.POST.get('limpezaAgua')
+                if int(request.POST.get('qtdePeixesTanque')) < 40:
+                    peixeMorto = "Sim"
+                elif int(request.POST.get('qtdePeixesTanque')) >=40 :
+                    peixeMorto = "Não"
+                statusTanque = request.POST.get('statusTanque')
+                valorAlface = request.POST.get('valorAlface')
+                valorPeixe = request.POST.get('valorPeixe')
+                dataInspecao = request.POST.get('dataInspecao')
+                qtdeAgua = request.POST.get('qtdeAgua')
+                qtdeAlfaceColhida = request.POST.get('qtdeAlfaceColhida')
+                qtdeAlfacePlantada = request.POST.get('qtdeAlfacePlantada')
+                if somaAlfaceInt == None:
+                    qtdeAlfaceTotal = qtdeAlfaceColhida
+                elif somaAlfaceInt != None:
+                    qtdeAlfaceTotal = somaAlfaceInt + int(qtdeAlfaceColhida)
+                qtdePeixesTanque = request.POST.get('qtdePeixesTanque')
+
+                #if len(DashModel.objects.filter(idCliente = request.user.id)) > 0:
+                if dataInspecao == data_atual_str and len(DashModel.objects.values('dataInspecao').filter(idCliente = request.user.id)) >= 1:
+                        print("Data igual teste" + data_atual_str+ "  "+ dataInspecao)
+                        DashModel.objects.filter(idCliente = request.user.id,
+                                                dataInspecao = data_atual_str).update(
+                                nomeCliente = str(nomeCliente),
+                                idCliente = idCliente,
+                                capacidadeTanque = capacidadeTanque,
+                                idTanque = idTanque,
+                                qtdeAlimentoPeixe = qtdeAlimentoPeixe,
+                                limpezaAgua = limpezaAgua,
+                                peixeMorto = peixeMorto,
+                                statusTanque = statusTanque,
+                                valorAlface = valorAlface,
+                                valorPeixe = valorPeixe,
+                                dataInspecao = dataInspecao,
+                                qtdeAgua = qtdeAgua,
+                                qtdeAlfaceColhida = qtdeAlfaceColhida,
+                                qtdeAlfacePlantada = qtdeAlfacePlantada,
+                                qtdePeixesTanque = qtdePeixesTanque,
+                            )
+                elif dataInspecao == data_atual_str and len(DashModel.objects.values('dataInspecao').filter(idCliente = request.user.id)) == 0:
+                    DashModel.objects.create(
+                    nomeCliente = nomeCliente,
+                    idCliente = idCliente,
+                    capacidadeTanque = capacidadeTanque,
+                    idTanque = idTanque,
+                    qtdeAlimentoPeixe = qtdeAlimentoPeixe,
+                    limpezaAgua = limpezaAgua,
+                    peixeMorto = peixeMorto,
+                    statusTanque = statusTanque,
+                    valorAlface = valorAlface,
+                    valorPeixe = valorPeixe,
+                    dataInspecao = dataInspecao,
+                    qtdeAgua = qtdeAgua,
+                    qtdeAlfaceColhida = qtdeAlfaceColhida,
+                    qtdeAlfacePlantada = qtdeAlfacePlantada,
+                    qtdeAlfaceTotal = qtdeAlfaceTotal,
+                    qtdePeixesTanque = qtdePeixesTanque,
+                )   
+                else:
+                    DashModel.objects.create(
+                        nomeCliente = nomeCliente,
                         idCliente = idCliente,
                         capacidadeTanque = capacidadeTanque,
                         idTanque = idTanque,
@@ -212,53 +267,16 @@ def CadastroDash(request):
                         qtdeAgua = qtdeAgua,
                         qtdeAlfaceColhida = qtdeAlfaceColhida,
                         qtdeAlfacePlantada = qtdeAlfacePlantada,
+                        qtdeAlfaceTotal = qtdeAlfaceTotal,
                         qtdePeixesTanque = qtdePeixesTanque,
-                    )
-        elif dataInspecao == data_atual_str and len(DashModel.objects.values('dataInspecao').filter(idCliente = request.user.id)) == 0:
-            DashModel.objects.create(
-            nomeCliente = nomeCliente,
-            idCliente = idCliente,
-            capacidadeTanque = capacidadeTanque,
-            idTanque = idTanque,
-            qtdeAlimentoPeixe = qtdeAlimentoPeixe,
-            limpezaAgua = limpezaAgua,
-            peixeMorto = peixeMorto,
-            statusTanque = statusTanque,
-            valorAlface = valorAlface,
-            valorPeixe = valorPeixe,
-            dataInspecao = dataInspecao,
-            qtdeAgua = qtdeAgua,
-            qtdeAlfaceColhida = qtdeAlfaceColhida,
-            qtdeAlfacePlantada = qtdeAlfacePlantada,
-            qtdeAlfaceTotal = qtdeAlfaceTotal,
-            qtdePeixesTanque = qtdePeixesTanque,
-        )   
-        else:
-            DashModel.objects.create(
-                nomeCliente = nomeCliente,
-                idCliente = idCliente,
-                capacidadeTanque = capacidadeTanque,
-                idTanque = idTanque,
-                qtdeAlimentoPeixe = qtdeAlimentoPeixe,
-                limpezaAgua = limpezaAgua,
-                peixeMorto = peixeMorto,
-                statusTanque = statusTanque,
-                valorAlface = valorAlface,
-                valorPeixe = valorPeixe,
-                dataInspecao = dataInspecao,
-                qtdeAgua = qtdeAgua,
-                qtdeAlfaceColhida = qtdeAlfaceColhida,
-                qtdeAlfacePlantada = qtdeAlfacePlantada,
-                qtdeAlfaceTotal = qtdeAlfaceTotal,
-                qtdePeixesTanque = qtdePeixesTanque,
-            )   
-        return redirect('/')
-    if request.method == 'GET':
-            form = DashForm()
-    contexto = {
-        'form' : form
-    }
-    return render(request, 'registro.html', contexto)
+                    )   
+                return redirect('/home')
+            if request.method == 'GET':
+                    form = DashForm()
+            contexto = {
+                'form' : form
+            }
+            return render(request, 'registro.html', contexto)
 
 def ContatoView(request):
     return render(request, 'contato.html')
