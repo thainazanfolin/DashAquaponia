@@ -1,55 +1,83 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="pt-br">
+<html class="dashhtml" lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dash Aquaponia</title>
+    <title>Dashboard</title>
 
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <script src="https://kit.fontawesome.com/0edc8eb879.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/apple-touch-icon.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon-16x16.png' %}">
     
 </head>
-<body>
-    <header>
-        <nav>
-            <a class="logo" href="/">Dash Aquaponia</a>
-            <div class="mobile-menu">
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-            </div>
-            <ul class="nav-list">
-                <li class="nav-item"><a href="/registro">Registro</a></li>
-                <li class="nav-item"><a href="contato">Contato</a></li>
-                <li class="nav-item"><a href="{% url 'DashAquaponia:logout' %}">Logout</a></li>
-            </ul>
 
-            <!-- <div class="btn-expandir">
-                <button>perfil</button>
-            </div> -->
-    </nav>
+<body class="dashbody">
+
+    <header class="dashheader">
+      <div class="dashinfo-header">
+        <div class="dashlogo">
+          <a href=""><h3>Dash Aquaponia</h3></a>
+        </div>
+      </div>
+      <div class="dashinfo-header">
+        <a href=""><h3>Dashboards</h3></a>
+        <a href=""><h3>Perfil</h3></a>
+        <!-- <img src="" alt=""> -->
+      </div>
     </header>
 
-    <script src="js/mobile_navbar.js"></script>
+    <section class="dashmain">
+        <div class="sidebar">
+          <h3 class="dashh3">Produção de Alface</h3>
+          <a href="" class="dasha">Relatórios</a>
+          <a href="" class="dasha">Imprimir</a>
+          <a href="" class="dasha">Compartilhar</a>
+          <br/>
+          <hr>
+        </div>
+    
+        <div class="dashcontent">
+          <div class="dashtitulo-secao">
+            <h2>Crescimento de Alface</h2>
+            <br/>
+            <hr>
+          </div>
+    
+          <div class="dashbox-info">
+            <div class="dashbox-info-single" style="background: var(--verdeesc);">
+              <div class="dashinfo-text">
+                <h3>Total Alface - Início</h3>
+                <p>100 unidades</p>
+              </div>
+            </div>
+      
+            <div class="dashbox-info-single" style="background: var(--verdeesc);">
+              <div class="dashinfo-text">
+                <h3>Total Alface - Final</h3>
+                <p>500 unidades</p>
+              </div>
+            </div>
+      
+            <div class="dashbox-info-single" style="background: var(--verdeesc);">
+              <div class="dashinfo-text">
+                <h3>Crescimento Total</h3>
+                <p>400 unidades</p>
+              </div>
+            </div>
+          </div>
+    
+          <div class="dashgraficos">
+            {{ dash_line|safe }}
+            {{ dash_bar|safe}}
+          </div>
+        </div>
+    </section> 
 
-    <br>
-    <br>
-    <br>
-
-    {{ dash_line|safe }}
-    {{ dash_bar|safe}}
-
-
-
-<script src="{% static 'js/mobile_navbar.js' %}"></script>
 </body>
 </html>
 

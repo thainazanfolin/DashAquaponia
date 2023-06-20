@@ -860,3 +860,85 @@ i {
     border: none;
     cursor: pointer;
 }
+
+
+/* DASH */
+.dashbody, .dashhtml {
+    overflow-x: hidden;
+    height: 100%;
+ 
+}
+
+.dashheader {
+    background: var(--dark);
+    padding: 20px 2%;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    
+}
+.dashinfo-header {
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    width: 200px;
+}
+
+
+
+.dashmain {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+}
+
+.sidebar {
+    width: 20%;
+    background: var(--dark2);
+}
+.sidebar h3 {
+    font-size: 20px;
+    margin: 10px;
+    color: var(--verdeesc);
+}
+.sidebar a {
+    display: block;
+    text-decoration: none;
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+.dashcontent {
+    width: 80%;
+    background: var(--cinza);
+    padding: 20px;
+}
+
+.dashtitulo-secao {
+    border-radius: 10px;
+    background: var(--dark2);
+    color: white;
+    padding: 10px;
+}
+
+.dashbox-info {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+.dashbox-info-single {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    color: white;
+    width: 100%;
+    border-radius: 10px;
+    margin: 0 10px;
+    padding: 10px;
+}
+
+.dashgraficos {
+    margin-top: 4%;
+    
+}
